@@ -1,10 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, ImageBackground, Pressable, Image } from 'react-native';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 import background from './assets/background.jpg';
 import logo from './assets/logo.webp'
 
-export default function App() {
+const Signup = () => {
   return (
     <View style={styles.container}>
       <ImageBackground source={background} style={styles.image} imageStyle={{ opacity: 0.45 }}>
@@ -20,10 +22,20 @@ export default function App() {
           </Pressable>
         </View>
       </ImageBackground>
-      <StatusBar style="auto" />
+      {/* <StatusBar style="auto" /> */}
     </View>
   );
 }
+
+const AppNavigator = createStackNavigator({
+  Signup: {
+    screen: Signup,
+    navigationOptions: ({ navigation }) => ({
+      // headerMode: 'none',
+      headerShown: false
+    }),
+  }
+})
 
 const styles = StyleSheet.create({
   container: {
@@ -68,3 +80,5 @@ const styles = StyleSheet.create({
     fontSize: 16
   }
 });
+
+export default createAppContainer(AppNavigator);

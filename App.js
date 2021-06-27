@@ -7,7 +7,10 @@ import Signup from './pages/Signup';
 
 const App = () => {
   return (
-    <Signup />
+    <>
+      <Signup />
+      <StatusBar style="dark" />
+    </>
   );
 };
 
